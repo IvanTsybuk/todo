@@ -1,0 +1,5 @@
+path:
+    projectPath: "http://localhost:8080/projects"
+    userPath: "http://localhost:8080/users"
+    taskPath: "http://localhost:8080/tasks"
+
