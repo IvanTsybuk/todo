@@ -7,7 +7,7 @@ import java.util.Optional;
 import lombok.extern.log4j.Log4j2;
 import org.based.domain.Task;
 import org.based.domain.User;
-import org.based.input.HostPath;
+import org.based.input.HostPathProperties;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -20,8 +20,9 @@ public class TodoTaskClient implements Repository<Task> {
     @NotNull
     private final RestTemplate restTemplate;
     @NotNull
-    private final HostPath hostPath;
-    public TodoTaskClient(@NotNull RestTemplate restTemplate, @NotNull HostPath hostPath) {
+    private final HostPathProperties hostPath;
+    public TodoTaskClient(@NotNull RestTemplate restTemplate,
+                          @NotNull HostPathProperties hostPath) {
         this.hostPath = hostPath;
         this.restTemplate = restTemplate;
         log.info("TodoTaskClient initialized");
@@ -52,8 +53,8 @@ public class TodoTaskClient implements Repository<Task> {
     @NotNull
     public Optional<Task> findByName(@NotNull final String name) {
         log.debug(String.format("Method findByName was called with arguments: arg1 - %s", name));
-        final Task task = restTemplate
-                .getForObject(hostPath.getTaskPath() + "/{name}", Task.class, name);
+        final Task task = restTemplate.getForObject(
+                hostPath.getTaskPath() + "/{name}", Task.class, name);
         if (task != null) {
             return Optional.of(task);
         }

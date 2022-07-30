@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Log4j2
-public class ApplicationConfiguration {
+public class InputConfiguration {
     private static final String URL_DEFAULT = "jdbc:postgresql://localhost:5432/todoApp";
     private static final String USER_DEFAULT = "postgres";
     private static final String PASSWORD_DEFAULT = "postgres";

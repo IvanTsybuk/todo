@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import lombok.extern.log4j.Log4j2;
 import org.based.domain.User;
-import org.based.input.HostPath;
+import org.based.input.HostPathProperties;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -19,8 +19,9 @@ public class TodoUserClient implements Repository<User> {
     @NotNull
     private final RestTemplate restTemplate;
     @NotNull
-    private final HostPath hostPath;
-    public TodoUserClient(@NotNull RestTemplate restTemplate, @NotNull HostPath hostPath) {
+    private final HostPathProperties hostPath;
+    public TodoUserClient(@NotNull RestTemplate restTemplate,
+                          @NotNull HostPathProperties hostPath) {
         this.hostPath = hostPath;
         this.restTemplate = restTemplate;
         log.info("TodoUserClient initialized");
